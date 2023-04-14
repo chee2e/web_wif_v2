@@ -6,18 +6,31 @@ on:
       - main
       
 env:
-  PROJECT_ID: your-project-id
+  PROJECT_ID: bespin-mhpark-dev
   IMAGE_NAME: testweb
   DOCKERFILE_PATH: ./Dockerfile
-  SERVICE_ACCOUNT_EMAIL: git-action@project.iam.gserviceaccount.com
+  SERVICE_ACCOUNT_EMAIL: git-action@bespin-mhpark-dev.iam.gserviceaccount.com
   
   
 jobs:
   build_and_push:
+    permissions:
+      id-token: write
+      contents: read
+      
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout source code
       uses: actions/checkout@v2
+      
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0.3.1'
+      with:
+        create_credentials_file: true
+        workload_identity_provider: 'projects/323044112454/locations/global/workloadIdentityPools/github-action-pool/providers/*'
+        service_account: 'git-action@bespin-mhpark-dev.iam.gserviceaccount.com'
       
     - name: Setup Google Cloud SDK
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
