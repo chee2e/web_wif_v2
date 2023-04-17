@@ -27,7 +27,7 @@ jobs:
       
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@1'
+      uses: 'google-github-actions/auth@v1'
       with:
         create_credentials_file: true
         workload_identity_provider: 'projects/323044112454/locations/global/workloadIdentityPools/github-action-pool/providers/github-action-provider'
