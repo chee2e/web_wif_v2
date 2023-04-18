@@ -45,8 +45,8 @@ jobs:
 
     - name: Configure Docker client
       run: |
-        gcloud auth login
-        gcloud auth configure-docker -q
+        docker-credential-gcr configure-docker
+        # gcloud auth configure-docker -q
         
     - name: Build and push Docker image
       env:
