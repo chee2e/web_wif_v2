@@ -8,7 +8,7 @@ on:
       
 env:
   PROJECT_ID: bespin-mhpark-dev
-  IMAGE_NAME: testweb
+  IMAGE_NAME: testweb_v2
   DOCKERFILE_PATH: ./Dockerfile
   SERVICE_ACCOUNT_EMAIL: git-action@bespin-mhpark-dev.iam.gserviceaccount.com
   
@@ -24,24 +24,14 @@ jobs:
     steps:
     - name: Checkout source code
       uses: 'actions/checkout@v3'
-      
-    - name: Delete existing credentials file
-      run: rm -f /home/runner/work/web_wif/web_wif/*.json
-      
+
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v1'
       with:
-        create_credentials_file: true
-        workload_identity_provider: 'projects/323044112454/locations/global/workloadIdentityPools/github-action-pool/providers/github-action-provider'
-        service_account: 'git-action@bespin-mhpark-dev.iam.gserviceaccount.com'     
-        
-#     - name: Setup Google Cloud SDK
-#       uses: google-github-actions/setup-gcloud@v1.1.0
-#       with:
-#         project_id: ${{ env.PROJECT_ID }}
-#         service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
-#         export_default_credentials: true
+        token_format: 'access_token'
+        workload_identity_provider: 'projects/323044112454/locations/global/workloadIdentityPools/github-action-pool/providers/github-action-provider-v2'
+        service_account: 'git-action@bespin-mhpark-dev.iam.gserviceaccount.com'
 
     - name: Configure Docker client
       run: |
@@ -54,7 +44,7 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
-        gcloud docker -- push gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
 #     - name: Build Docker image
 #       run: |
