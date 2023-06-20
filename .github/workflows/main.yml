@@ -40,7 +40,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: projects/195937949357/locations/global/workloadIdentityPools/github-actions/providers/dqa-d-ingest-cd-provider-v2
-        service_account: 'dqa-d-sc-data-cd-github@symbolic-object-383000.iam.gserviceaccount.com'
+        service_account: 'dqa-d-sc-service-cd-github@symbolic-object-383000.iam.gserviceaccount.com'
         audience: 'https://github.com/chee2e/web_wif_v2'
         
     - name: Set up Cloud SDK
