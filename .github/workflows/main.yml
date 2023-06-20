@@ -11,6 +11,7 @@ env:
   IMAGE_NAME: testweb_v2
   DOCKERFILE_PATH: ./Dockerfile
   SERVICE_ACCOUNT_EMAIL: dqa-d-sc-ingest-cicd-github@symbolic-object-383000.iam.gserviceaccount.com
+  audience: 'https://github.com/chee2e/web_wif_v2'
   
   
 jobs:
