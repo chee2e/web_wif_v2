@@ -13,19 +13,6 @@ env:
   SERVICE_ACCOUNT_EMAIL: dqa-d-sc-ingest-cicd-github@symbolic-object-383000.iam.gserviceaccount.com
   
   
-  
-jobs:
-  build_and_push:
-    permissions:
-      id-token: write
-      contents: read
-  
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout source code
-      uses: 'actions/checkout@v3'
-
 jobs:
   build_and_push:
     permissions:
