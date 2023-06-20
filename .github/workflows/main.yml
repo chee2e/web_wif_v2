@@ -10,7 +10,9 @@ env:
   PROJECT_ID: symbolic-object-383000
   IMAGE_NAME: testweb_v2
   DOCKERFILE_PATH: ./Dockerfile
-  SERVICE_ACCOUNT_EMAIL: dqa-d-sc-ingest-cicd-github@symbolic-object-383000.iam.gserviceaccount.com
+  SERVICE_ACCOUNT_EMAIL: dqa-d-sc-ingest-cd-github@symbolic-object-383000.iam.gserviceaccount.com
+  GAR_LOCATION: asia-northeast3
+  REPOSITORY: trivy-repo
   
   
 jobs:
@@ -38,7 +40,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: projects/195937949357/locations/global/workloadIdentityPools/github-actions/providers/dqa-d-ingest-cd-provider-2
-        service_account: 'dqa-d-sc-ingest-cd-github@symbolic-object-383000.iam.gserviceaccount.com'
+        service_account: dqa-d-sc-ingest-cd-github@symbolic-object-383000.iam.gserviceaccount.com
         audience: 'https://github.com/chee2e/web_wif_v2'
         
     - name: Set up Cloud SDK
