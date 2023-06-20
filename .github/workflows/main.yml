@@ -7,7 +7,7 @@ on:
     branches: [ main ]
       
 env:
-  PROJECT_ID: bespin-mhpark-dev
+  PROJECT_ID: symbolic-object-383000
   IMAGE_NAME: testweb_v2
   DOCKERFILE_PATH: ./Dockerfile
   SERVICE_ACCOUNT_EMAIL: dqa-d-sc-ingest-cicd-github@symbolic-object-383000.iam.gserviceaccount.com
